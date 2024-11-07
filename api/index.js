@@ -189,7 +189,7 @@ app.post("/login", async (req, res) => {
         if (!passwordIsValid)
             return res.status(400).json({ auth: false, token: null });
 
-        var token = jwt.sign({ id: user.id, username: user.username }, {
+        var token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY, {
             expiresIn: 86400,
         });
 
